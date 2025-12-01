@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J. Sterling | Management Consulting</title>
+    <meta name="description" content="Strategic management consulting portfolio delivering tangible results for global enterprises.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            600: '#0284c7', // Primary Blue
+                            800: '#075985',
+                            900: '#0c4a6e', // Deep Navy
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styles for things Tailwind is too verbose for */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-600 antialiased bg-white selection:bg-brand-600 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-8 h-8 bg-brand-900 text-white flex items-center justify-center rounded-sm mr-2">
+                        <span class="font-serif font-bold text-xl">S</span>
+                    </div>
+                    <span class="font-serif text-xl font-bold text-slate-900 tracking-tight">STERLING <span class="text-brand-600">CONSULTING</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">About</a>
+                    <a href="#services" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Services</a>
+                    <a href="#cases" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Case Studies</a>
+                    <a href="#testimonials" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Insights</a>
+                    <a href="#contact" class="px-5 py-2.5 text-sm font-semibold text-white bg-brand-900 hover:bg-brand-800 rounded-sm transition-all shadow-md hover:shadow-lg">
+                        Contact Me
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50 rounded-md">About</a>
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50 rounded-md">Services</a>
+                <a href="#cases" class="block px-3 py-3 text-base font-medium text-slate-700 hover:text-brand-600 hover:bg-slate-50 rounded-md">Case Studies</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-white bg-brand-900 rounded-md text-center mt-4">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-pattern">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900/95"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-brand-900/50 border border-brand-700/50 text-brand-100 text-xs font-semibold uppercase tracking-wider mb-6 fade-in-up">
+                Management Consulting & Strategy
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight fade-in-up" style="transition-delay: 100ms;">
+                Navigating Complexity.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-200 to-white">Delivering Growth.</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-300 mb-10 fade-in-up" style="transition-delay: 200ms;">
+                I partner with ambitious leaders to solve their toughest challenges, drive operational excellence, and build sustainable value.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in-up" style="transition-delay: 300ms;">
+                <a href="#contact" class="px-8 py-4 text-base font-bold text-slate-900 bg-white hover:bg-brand-50 rounded-sm transition-all shadow-lg hover:shadow-xl flex items-center justify-center">
+                    Schedule Consultation
+                    <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+                <a href="#cases" class="px-8 py-4 text-base font-bold text-white border border-slate-600 hover:bg-slate-800 hover:border-slate-500 rounded-sm transition-all flex items-center justify-center">
+                    View Portfolio
+                </a>
+            </div>
+        </div>
+
+        <!-- Social Proof Bar -->
+        <div class="absolute bottom-0 w-full border-t border-white/10 bg-white/5 backdrop-blur-sm">
+            <div class="max-w-7xl mx-auto px-4 py-6 flex flex-wrap justify-center md:justify-between items-center gap-8 text-slate-400 grayscale opacity-70">
+                <span class="text-sm font-medium uppercase tracking-widest hidden md:block">Trusted By:</span>
+                <div class="flex items-center gap-8 lg:gap-12">
+                   <!-- Mock Logos using text for simplicity/reliability -->
+                   <span class="font-serif font-bold text-xl">Acme Corp</span>
+                   <span class="font-serif font-bold text-xl">GlobalTech</span>
+                   <span class="font-serif font-bold text-xl">Nexus</span>
+                   <span class="font-serif font-bold text-xl">Stark Ind</span>
+                   <span class="font-serif font-bold text-xl hidden sm:block">Wayne Ent</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative fade-in-up">
+                    <div class="absolute -top-4 -left-4 w-24 h-24 bg-brand-100 rounded-sm -z-10"></div>
+                    <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-slate-100 rounded-sm -z-10"></div>
+                    <!-- Placeholder for Headshot -->
+                    <div class="aspect-[4/5] bg-slate-200 rounded-sm overflow-hidden relative shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Consultant Portrait" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/80 to-transparent p-6 text-white">
+                            <p class="font-serif text-2xl font-bold">James Sterling</p>
+                            <p class="text-sm text-brand-200 uppercase tracking-widest">Principal Consultant</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up" style="transition-delay: 200ms;">
+                    <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">About Me</h2>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">Bridging the gap between strategy and execution.</h3>
+                    <div class="space-y-4 text-lg text-slate-600 leading-relaxed">
+                        <p>
+                            With over 12 years of experience in top-tier management consulting, I help organizations navigate critical periods of transformation and growth. My approach is rooted in data-driven insights but tailored to the human realities of your organization.
+                        </p>
+                        <p>
+                            I don't just deliver slide decks. I work alongside your team to implement solutions that stick. Whether it's restructuring for efficiency, entering new markets, or navigating a merger, I bring clarity to chaos.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-6 mt-8 pt-8 border-t border-slate-100">
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900">12+</p>
+                            <p class="text-sm text-slate-500 mt-1">Years Experience</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900">$500M+</p>
+                            <p class="text-sm text-slate-500 mt-1">Value Created</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900">40+</p>
+                            <p class="text-sm text-slate-500 mt-1">Projects Delivered</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold text-slate-900">MBA</p>
+                            <p class="text-sm text-slate-500 mt-1">Harvard Business School</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Expertise</h2>
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-slate-900">Core Capabilities</h3>
+                <p class="mt-4 text-slate-600 text-lg">Comprehensive consulting services designed to address the multifaceted challenges of modern business.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group fade-in-up">
+                    <div class="w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors">
+                        <i data-lucide="bar-chart-2" class="w-6 h-6 text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Corporate Strategy</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Defining long-term vision, identifying growth opportunities, and optimizing portfolio allocation to maximize shareholder value.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group fade-in-up" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors">
+                        <i data-lucide="settings" class="w-6 h-6 text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Operational Excellence</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Streamlining processes, reducing costs, and improving supply chain resilience to enhance bottom-line performance.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group fade-in-up" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors">
+                        <i data-lucide="monitor" class="w-6 h-6 text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Digital Transformation</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Leveraging technology to reinvent business models, enhance customer experiences, and modernize legacy infrastructure.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group fade-in-up">
+                    <div class="w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors">
+                        <i data-lucide="users" class="w-6 h-6 text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Organizational Design</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Aligning talent and structure with strategy. Building agile teams and fostering cultures that attract and retain top talent.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group fade-in-up" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors">
+                        <i data-lucide="briefcase" class="w-6 h-6 text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">M&A Advisory</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        End-to-end support for mergers and acquisitions, from target screening and due diligence to post-merger integration.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group fade-in-up" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-brand-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors">
+                        <i data-lucide="refresh-cw" class="w-6 h-6 text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Turnaround & Restructuring</h4>
+                    <p class="text-slate-600 leading-relaxed">
+                        Stabilizing distressed organizations, managing liquidity, and implementing rapid changes to restore profitability.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section id="cases" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div class="max-w-2xl fade-in-up">
+                    <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Portfolio</h2>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-slate-900">Featured Case Studies</h3>
+                </div>
+                <div class="mt-4 md:mt-0 fade-in-up">
+                    <a href="#" class="group inline-flex items-center font-semibold text-brand-600 hover:text-brand-800">
+                        View all projects 
+                        <i data-lucide="arrow-right" class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Case Study 1 -->
+                <div class="group cursor-pointer fade-in-up">
+                    <div class="overflow-hidden rounded-sm shadow-md mb-6 relative">
+                        <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Skyscraper" class="w-full h-64 lg:h-80 object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">FinTech</span>
+                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                        <span class="text-xs text-slate-500">London, UK</span>
+                    </div>
+                    <h4 class="text-2xl font-serif font-bold text-slate-900 mb-3 group-hover:text-brand-700 transition-colors">Post-Merger Integration for Global Bank</h4>
+                    <p class="text-slate-600 mb-4">Led the integration of two regional banks, harmonizing IT systems and reducing operational redundancies.</p>
+                    <div class="flex gap-6 border-t border-slate-100 pt-4">
+                        <div>
+                            <span class="block text-xl font-bold text-slate-900">22%</span>
+                            <span class="text-xs text-slate-500 uppercase">Cost Reduction</span>
+                        </div>
+                        <div>
+                            <span class="block text-xl font-bold text-slate-900">6 Mo</span>
+                            <span class="text-xs text-slate-500 uppercase">Ahead of Sched.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="group cursor-pointer fade-in-up" style="transition-delay: 200ms;">
+                    <div class="overflow-hidden rounded-sm shadow-md mb-6 relative">
+                         <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Factory" class="w-full h-64 lg:h-80 object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="flex items-center gap-4 mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Manufacturing</span>
+                        <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
+                        <span class="text-xs text-slate-500">Detroit, USA</span>
+                    </div>
+                    <h4 class="text-2xl font-serif font-bold text-slate-900 mb-3 group-hover:text-brand-700 transition-colors">Supply Chain Resilience Strategy</h4>
+                    <p class="text-slate-600 mb-4">Redesigned the supply chain network for an automotive parts manufacturer to mitigate geopolitical risk.</p>
+                    <div class="flex gap-6 border-t border-slate-100 pt-4">
+                        <div>
+                            <span class="block text-xl font-bold text-slate-900">30%</span>
+                            <span class="text-xs text-slate-500 uppercase">Inventory Drop</span>
+                        </div>
+                        <div>
+                            <span class="block text-xl font-bold text-slate-900">99.8%</span>
+                            <span class="text-xs text-slate-500 uppercase">Service Level</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 p-12 opacity-10">
+            <i data-lucide="quote" class="w-64 h-64 text-white"></i>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-brand-400 font-bold tracking-wide uppercase text-sm mb-12 text-center">Client Feedback</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-800/50 p-8 rounded-sm border border-slate-700">
+                    <div class="flex text-yellow-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-6">"James brings a rare combination of high-level strategic thinking and roll-up-your-sleeves execution. He was instrumental in our Series B fundraising prep."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-slate-600 rounded-full flex items-center justify-center font-bold">JD</div>
+                        <div>
+                            <p class="font-bold text-white">John Doe</p>
+                            <p class="text-xs text-slate-400">CEO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-8 rounded-sm border border-slate-700">
+                    <div class="flex text-yellow-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-6">"The operational overhaul recommended by Sterling Consulting saved us millions in the first year alone. Highly professional and insightful."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-slate-600 rounded-full flex items-center justify-center font-bold">SM</div>
+                        <div>
+                            <p class="font-bold text-white">Sarah Miller</p>
+                            <p class="text-xs text-slate-400">COO, Global Logistics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-8 rounded-sm border border-slate-700">
+                    <div class="flex text-yellow-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-6">"We engaged James to help with our digital transformation roadmap. The clarity and structure he brought to the project were invaluable."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-slate-600 rounded-full flex items-center justify-center font-bold">RW</div>
+                        <div>
+                            <p class="font-bold text-white">Robert Wong</p>
+                            <p class="text-xs text-slate-400">VP Strategy, RetailCo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-brand-600 font-bold tracking-wide uppercase text-sm mb-3">Get in Touch</h2>
+                    <h3 class="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-6">Let's discuss your next strategic move.</h3>
+                    <p class="text-slate-600 text-lg mb-10">
+                        Whether you need a comprehensive strategic review or support on a specific project, I'm ready to help you achieve your goals.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center flex-shrink-0 text-brand-600">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900">Email</p>
+                                <a href="mailto:james@sterlingconsulting.com" class="text-slate-600 hover:text-brand-600">james@sterlingconsulting.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center flex-shrink-0 text-brand-600">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900">Phone</p>
+                                <p class="text-slate-600">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center flex-shrink-0 text-brand-600">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-slate-900">Office</p>
+                                <p class="text-slate-600">100 Financial District Blvd<br>New York, NY 10005</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-sm shadow-lg">
+                    <form onsubmit="event.preventDefault(); alert('Thank you for your message. I will be in touch shortly.');" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-slate-700 mb-2">First Name</label>
+                                <input type="text" id="firstName" class="w-full px-4 py-3 rounded-sm border border-slate-300 focus:border-brand-600 focus:ring-1 focus:ring-brand-600 outline-none transition-all" placeholder="John">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
+                                <input type="text" id="lastName" class="w-full px-4 py-3 rounded-sm border border-slate-300 focus:border-brand-600 focus:ring-1 focus:ring-brand-600 outline-none transition-all" placeholder="Doe">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-sm border border-slate-300 focus:border-brand-600 focus:ring-1 focus:ring-brand-600 outline-none transition-all" placeholder="john@company.com">
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-slate-700 mb-2">Subject</label>
+                            <select id="subject" class="w-full px-4 py-3 rounded-sm border border-slate-300 focus:border-brand-600 focus:ring-1 focus:ring-brand-600 outline-none transition-all bg-white">
+                                <option>General Inquiry</option>
+                                <option>Strategy Consultation</option>
+                                <option>Operational Efficiency</option>
+                                <option>Speaking Request</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-sm border border-slate-300 focus:border-brand-600 focus:ring-1 focus:ring-brand-600 outline-none transition-all" placeholder="How can I help you?"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-900 text-white font-bold py-4 px-8 rounded-sm hover:bg-brand-800 transition-all shadow-md hover:shadow-lg">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <span class="font-serif text-xl font-bold text-white tracking-tight mb-4 block">STERLING <span class="text-brand-500">CONSULTING</span></span>
+                    <p class="text-sm max-w-sm">
+                        Delivering measurable results and strategic clarity for forward-thinking organizations worldwide.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#cases" class="hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm">&copy; 2024 Sterling Management Consulting. All rights reserved.</p>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar blur effect optimization (optional)
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+    </script>
+</body>
+</html>
